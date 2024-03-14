@@ -1,0 +1,1 @@
+print("".join([chr(index) for index in [ord(letter) for letter in "Hello World!"[::-1]][::-1]]))

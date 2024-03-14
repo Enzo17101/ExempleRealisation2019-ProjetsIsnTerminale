@@ -1,0 +1,25 @@
+https://www.developpez.net/forums/d1346336/autres-langages/python/gui/tkinter/ouvrir-explorateur-fichier/
+
+import Tkinter as tk
+from tkFileDialog import askopenfilename
+from PIL import Image, ImageTk
+ 
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#
+# 
+def openfile():
+    global photo
+    im = askopenfilename(filetypes=[('png files', '.png'), ('jpg files', '.jpg')])
+    image = Image.open(im) 
+    photo = ImageTk.PhotoImage(image)
+    canvas.itemconfig(cimage, image=photo)
+ 
+ 
+root = tk.Tk()
+canvas = tk.Canvas(root)
+cimage = canvas.create_image(0, 0, anchor=tk.NW, image="")
+canvas.pack()
+ouvrir = tk.Button(root, text="Ouvrir", command=openfile)
+ouvrir.pack()
+root.mainloop()
